@@ -1,46 +1,68 @@
-# Getting Started with Create React App
+# Youtube Search Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Installation
 
-## Available Scripts
+- CRA
 
-In the project directory, you can run:
+```
+npx create-react-app youtube-search-clone --template typescript
+```
 
-### `npm start`
+- TailwindCSS v3.0.24
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+https://tailwindcss.com/docs/guides/create-react-app
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- SASS & heroicons
 
-### `npm test`
+```
+npm install sass @heroicons/react
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React-Router-Dom
 
-### `npm run build`
+```
+npm install react-router-dom
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React-Infinite-Scroller
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+npm install react-infinite-scroller
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## RoadMap
 
-### `npm run eject`
+1. Create Youtube UI (as similar as possible)
+2. Handle search query (use react-router-dom@v6)
+3. Fetch search result from Youtube Data API (also get nextPageToken)
+4. Load data with 4 videos each page (implement with Infinite Scroll)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Layout Structure
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Header (fixed)
+  - Logo / **Searchbar** / Profile
+- Div
+  - Sidebar
+  - **Search Results** (Video)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Search Functionality
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+I have come up of 4 different ways to implement search and fetch, and I chose `react-router` as my approach. 
 
-## Learn More
+1. State lifting
+2. useContext
+3. @reduxjs/toolkit + react-redux
+4. **react-router**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The query will be displayed in the address bar like `https://localhost?query=XXX`, and the `<Results>` component will detect the change in `useLocation()` and start fetching new query results.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This approach has some advantages. First, we don't need to handle the query in any kind of state. Secondly, we can easily search for videos from URLs.
+
+## Fetch Results (with Infinite Scroll)
+
+After we extract the `query` from `useLocation()`, we can use [[Youtube Data API - search: list]](https://developers.google.com/youtube/v3/docs/search/list) to start our search. There are two scenarios we will fetch the API:
+
+1. When `useEffect()` detects the change of query from `useLocation()`, it will reset the result and get the new result if the old query result already exists.
+2. When we scroll to the bottom of the page, we will use `nextPageToken` to query new results and append to the existing ones. We use [React-Infinite-Scroller](https://github.com/danbovey/react-infinite-scroller) to implement scroll detection.
