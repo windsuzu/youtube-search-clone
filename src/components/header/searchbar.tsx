@@ -18,9 +18,19 @@ const Searchbar = ({ className }: Props) => {
         setQuery("");
     };
 
-    const submitQuery = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault();
+    const submitQuery = () => {
         if (query !== "") navigate(`?query=${query}`);
+    };
+
+    const handleSearchButtonClick = (
+        e: React.MouseEvent<HTMLButtonElement>
+    ) => {
+        e.preventDefault();
+        submitQuery();
+    };
+
+    const handleInputEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") submitQuery();
     };
 
     return (
@@ -32,6 +42,7 @@ const Searchbar = ({ className }: Props) => {
                     placeholder="搜尋"
                     value={query}
                     onChange={handleQueryChange}
+                    onKeyDown={handleInputEnter}
                 />
                 {query.length > 0 && (
                     <button
@@ -44,7 +55,7 @@ const Searchbar = ({ className }: Props) => {
             </div>
             <button
                 className="px-6 py-2 bg-[#313131] rounded-r-sm border border-[#313131] border-l-0"
-                onClick={submitQuery}
+                onClick={handleSearchButtonClick}
             >
                 <SearchIcon className="w-6 h-6 text-white" />
             </button>

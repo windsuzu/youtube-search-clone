@@ -37,13 +37,13 @@ const Results = () => {
                     message={`有錯誤發生，可能的原因為 (${error.message})`}
                 />
             )}
-            {!isLoading && data.length === 0 && (
+            {!isLoading && !error && data.length === 0 && (
                 <Message
                     title="你還沒有進行任何搜尋"
                     message="請使用上方搜尋欄查詢你想要的影片!"
                 />
             )}
-            {!isLoading && data.length > 0 && (
+            {!isLoading && !error && data.length > 0 && (
                 <InfiniteScroll
                     pageStart={0}
                     hasMore={hasMore}

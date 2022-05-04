@@ -1,8 +1,8 @@
 import { Result } from "./../interface/result";
+// const MOCK_API_URL = "https://5d98da14-1124-4272-b486-9f21c5bf1766.mock.pstmn.io/search";
+
 const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
-// const API_URL = "https://youtube.googleapis.com/youtube/v3/search";
-const API_URL =
-    "https://5d98da14-1124-4272-b486-9f21c5bf1766.mock.pstmn.io/search";
+const API_URL = "https://youtube.googleapis.com/youtube/v3/search";
 
 export const fetchAPI = async (
     query: string,

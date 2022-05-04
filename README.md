@@ -1,4 +1,4 @@
-# Youtube Search Clone
+
 
 ## Installation
 
@@ -69,3 +69,9 @@ After we extract the `query` from `useLocation()`, we can use [[Youtube Data API
 
 1. When `useEffect()` detects the change of query from `useLocation()`, it will reset the result and get the new result if the old query result already exists.
 2. When we scroll to the bottom of the page, we will use `nextPageToken` to query new results and append to the existing ones. We use [React-Infinite-Scroller](https://github.com/danbovey/react-infinite-scroller) to implement scroll detection.
+
+There are 3 data handling functions (i.e. `init fetch`, `infinite scroll`, `clear data`) encapsulated in our custom hook `useQuery`. The UI component `<Results>` only needs to check the query, change the query, and detect scrolling to the bottom. The implementation of loading and updating the data is left to `useQuery()`.
+
+- [API endpoint](src/lib/api.ts)
+- [`<Results>` Component](src/components/results.tsx)
+- [Custom hook useQuery](src/hooks/useQuery.ts)
