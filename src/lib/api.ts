@@ -9,7 +9,7 @@ export const fetchAPI = async (
     nextPageToken?: string,
     part = "snippet",
     type = "video",
-    limit = 4
+    limit = 50 // I have to increate this value from 4 to 50 to avoid Youtube Data API 100 quota limit
 ): Promise<Result | null> => {
     const params_url =
         `${API_URL}?part=${part}&q=${query}&key=${API_KEY}&maxResults=${limit}&type=${type}` +
