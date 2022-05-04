@@ -13,7 +13,7 @@ import SidebarButton from "./sidebar-button";
 
 const Sidebar = () => {
     return (
-        <div className="bg-secondary min-h-screen hidden md:inline-block text-white pt-24">
+        <div className="bg-secondary hidden md:inline-block text-white pt-24 h-screen">
             <div className="flex flex-col">
                 <SidebarButton
                     icon={<HomeIcon className="w-6 h-6" />}

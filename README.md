@@ -26,10 +26,13 @@ npm install sass @heroicons/react
 npm install react-router-dom
 ```
 
-- React-Infinite-Scroller
+- React-Infinite-Scroller & tailwind-scrollbar-hide
 
 ```
 npm install react-infinite-scroller
+npm i --save-dev @types/react-infinite-scroller
+
+npm install tailwind-scrollbar-hide
 ```
 
 ## RoadMap
