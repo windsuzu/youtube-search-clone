@@ -22,7 +22,7 @@ const Video = ({
             target="_blank"
             rel="noopener noreferrer"
         >
-            <div className="flex cursor-pointer text-[#aaaaaa] group">
+            <div className="flex flex-col md:flex-row cursor-pointer text-[#aaaaaa] group">
                 {/* Thumbnail */}
                 <img
                     src={thumbnailUrl}
@@ -31,11 +31,11 @@ const Video = ({
                 />
 
                 {/* Description */}
-                <div className="flex flex-col p-4 pt-0">
-                    <h1 className="text-white text-lg">{title}</h1>
-                    <p className="text-xs">{time}</p>
-                    <p className="text-sm py-4">{channelTitle}</p>
-                    <p className="text-xs">{description}</p>
+                <div className="flex flex-col pt-2 md:p-4 md:pt-0">
+                    <h1 className="text-white text-sm md:text-lg">{title}</h1>
+                    <p className="hidden md:block text-xs">{time}</p>
+                    <p className="text-sm py-0 md:py-4">{channelTitle}</p>
+                    <p className="hidden md:block text-xs">{description}</p>
                 </div>
             </div>
         </a>

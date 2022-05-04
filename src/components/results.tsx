@@ -28,7 +28,7 @@ const Results = () => {
     }, [location, clearData]);
 
     return (
-        <div className="bg-primary w-[70%] h-screen overflow-y-scroll scrollbar-hide pt-24 pl-24 flex flex-col items-center">
+        <div className="bg-primary md:w-[70%] h-screen overflow-y-scroll scrollbar-hide pt-24 px-8 md:pl-24 flex flex-col items-center">
             {isLoading && <LoadingIndicator />}
 
             {!isLoading && error !== null && (
@@ -54,7 +54,7 @@ const Results = () => {
                     {data.map((item, i) => (
                         <div
                             key={`${i}${item.id.videoId || ""}`}
-                            className="p-1 m-4"
+                            className="pt-8 md:pt-0 md:p-1 md:m-4"
                         >
                             <Video
                                 videoId={item.id.videoId || ""}
