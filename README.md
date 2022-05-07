@@ -1,5 +1,7 @@
 https://user-images.githubusercontent.com/14892083/166642576-bfe8db3a-a25f-4f57-a300-faa28a2f979c.mp4
 
+A Youtube search function clone project built with `React`, `TypeScript`, `React-Router`, `TailwindCSS`, and `React-Infinite-Scroller`. Users can search for videos on Youtube through `Youtube-Data-API V3` with a quota of 100 times a day. The main takeaway from this project is how to implement **infinite scroll** in react.  In this project, we achieve infinite scrolling by combining `react-infinite-scroller` with our custom hook `useQuery` to load more videos with the `nextPageToken` obtained from the previous api call.
+
 DEMO SITE ❤️ https://windsuzu.github.io/youtube-search-clone
 
 ## Installation
